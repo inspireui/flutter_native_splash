@@ -15,11 +15,14 @@ part 'constants.dart';
 part 'ios.dart';
 part 'templates.dart';
 part 'web.dart';
+part 'macos.dart';
 
 /// Create splash screens for Android and iOS
 void createSplash({String? path}) {
   var config = getConfig(configFile: path);
-  checkConfig(config);
+  if ((!config.containsKey('ios') || config['ios']) &&
+      (!config.containsKey('android') || config['android']) &&
+      (!config.containsKey('web') || config['web'])) checkConfig(config);
   createSplashByConfig(config);
 }
 
@@ -40,6 +43,8 @@ void createSplashByConfig(Map<String, dynamic> config) {
   String iosContentMode = config['ios_content_mode'] ?? 'center';
   final webImageMode = (config['web_image_mode'] ?? 'center');
   bool android12 = (config['android12'] ?? false);
+  var desktopImage =
+      checkImageExists(config: config, parameter: 'desktop_image');
 
   if (!config.containsKey('android') || config['android']) {
     if (Directory('android').existsSync()) {
@@ -89,6 +94,14 @@ void createSplashByConfig(Map<String, dynamic> config) {
           imageMode: webImageMode);
     } else {
       print('Web folder not found, skipping web splash update...');
+    }
+  }
+
+  if (!config.containsKey('macos') || config['macos']) {
+    if (Directory('macos').existsSync()) {
+      _createMacosSplash(imagePath: desktopImage);
+    } else {
+      print('Macos folder not found, skipping web splash update...');
     }
   }
 

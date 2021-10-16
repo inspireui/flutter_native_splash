@@ -39,3 +39,7 @@ const String _webSplashFolder = _webFolder + 'splash/';
 const String _webSplashImagesFolder = _webSplashFolder + 'img/';
 const String _webIndex = _webFolder + 'index.html';
 const String _webRelativeStyleFile = 'splash/style.css';
+
+// Macos
+const String _MacosAssetsSplashImageFolder =
+    'macos/Runner/Assets.xcassets/SplashImage.imageset/';

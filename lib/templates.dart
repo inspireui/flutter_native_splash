@@ -373,3 +373,29 @@ const List<String> _indexHtmlPicture = [
   '    <img class="[IMAGEMODE]" src="splash/img/light-1x.png" />',
   '  </picture>',
 ];
+
+const String _MacosContentsJson = '''
+{
+  "images" : [
+    {
+      "filename" : "SplashImage.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "SplashImage@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "SplashImage@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
+''';

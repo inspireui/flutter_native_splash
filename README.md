@@ -99,6 +99,8 @@ flutter_native_splash:
 
   # To enable support for Android 12, set the following parameter to true.  Defaults to false.
   #android12: true
+  # Desktop
+  #desktop_image: assets/image.png
 ```
 
 ## 2. Run the package
