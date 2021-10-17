@@ -10,12 +10,12 @@ class _MacosSplashImageTemplate {
 
 final List<_MacosSplashImageTemplate> MacosSplashImages =
     <_MacosSplashImageTemplate>[
-  _MacosSplashImageTemplate(fileName: 'SplashImage.png', pixelDensity: 1),
-  _MacosSplashImageTemplate(fileName: 'SplashImage@2x.png', pixelDensity: 2),
-  _MacosSplashImageTemplate(fileName: 'SplashImage@3x.png', pixelDensity: 3),
+  _MacosSplashImageTemplate(fileName: 'SplashImage.png', pixelDensity: 4),
+  _MacosSplashImageTemplate(fileName: 'SplashImage@2x.png', pixelDensity: 5),
+  _MacosSplashImageTemplate(fileName: 'SplashImage@3x.png', pixelDensity: 6),
 ];
 
-void _createMacosSplash({required String? imagePath}) {
+void _createMacosSplash({required String? imagePath, int? width, int? height}) {
   if (imagePath == null) {
     return;
   }
@@ -39,4 +39,9 @@ void _createMacosSplash({required String? imagePath}) {
   var splashImageFile = File(_MacosAssetsSplashImageFolder + 'Contents.json');
   splashImageFile.createSync(recursive: true);
   splashImageFile.writeAsStringSync(_MacosContentsJson);
+  if (width != null && height != null) {
+    var mainMenu = File(_MacosMainFile);
+    mainMenu.createSync(recursive: true);
+    mainMenu.writeAsStringSync(macosMainMenu(width, height));
+  }
 }

@@ -45,6 +45,8 @@ void createSplashByConfig(Map<String, dynamic> config) {
   bool android12 = (config['android12'] ?? false);
   var desktopImage =
       checkImageExists(config: config, parameter: 'desktop_image');
+  var width = int.tryParse(config['width'].toString());
+  var height = int.tryParse(config['height'].toString());
 
   if (!config.containsKey('android') || config['android']) {
     if (Directory('android').existsSync()) {
@@ -99,7 +101,7 @@ void createSplashByConfig(Map<String, dynamic> config) {
 
   if (!config.containsKey('macos') || config['macos']) {
     if (Directory('macos').existsSync()) {
-      _createMacosSplash(imagePath: desktopImage);
+      _createMacosSplash(imagePath: desktopImage, width: width, height: height);
     } else {
       print('Macos folder not found, skipping web splash update...');
     }

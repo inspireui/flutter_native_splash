@@ -43,3 +43,4 @@ const String _webRelativeStyleFile = 'splash/style.css';
 // Macos
 const String _MacosAssetsSplashImageFolder =
     'macos/Runner/Assets.xcassets/SplashImage.imageset/';
+const String _MacosMainFile = 'macos/Runner/Base.lproj/MainMenu.xib';
