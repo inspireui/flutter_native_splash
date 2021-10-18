@@ -16,6 +16,7 @@ part 'ios.dart';
 part 'templates.dart';
 part 'web.dart';
 part 'macos.dart';
+part 'windows.dart';
 
 /// Create splash screens for Android and iOS
 void createSplash({String? path}) {
@@ -103,7 +104,15 @@ void createSplashByConfig(Map<String, dynamic> config) {
     if (Directory('macos').existsSync()) {
       _createMacosSplash(imagePath: desktopImage, width: width, height: height);
     } else {
-      print('Macos folder not found, skipping web splash update...');
+      print('Macos folder not found, skipping macos splash update...');
+    }
+  }
+
+  if (!config.containsKey('windows') || config['windows']) {
+    if (Directory('windows').existsSync()) {
+      _createWindowsSplash(width: width, height: height);
+    } else {
+      print('Windows folder not found, skipping windows splash update...');
     }
   }
 
